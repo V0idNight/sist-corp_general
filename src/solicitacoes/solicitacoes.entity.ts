@@ -7,7 +7,7 @@ import {
   VersionColumn,
 } from 'typeorm';
 
-export type StatusSolicitacao = 'pendente' | 'aprovada';
+export type StatusSolicitacao = 'pendente' | 'aprovada' | 'rejeitada';
 export type PrioridadeSolicitacao = 'normal' | 'urgente';
 
 @Entity({ name: 'solicitacoes' })
@@ -35,4 +35,7 @@ export class Solicitacao {
 
   @UpdateDateColumn({ name: 'atualizada_em', type: 'timestamptz' })
   atualizadaEm: Date;
+
+  @Column({ name: 'justificativa_rejeicao', type: 'varchar', length: 200, nullable: true})
+  justificativaRejeicao?: string | null
 }
